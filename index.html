@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convertisseur de devise</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Convertisseur de devise</h1>
+    <form>
+      <label for="montant">Montant :</label>
+      <input type="number" id="montant" placeholder="Entrez le montant">
+      <label for="devise-depart">Devise de départ :</label>
+      <select id="devise-depart">
+        <option value="XOF">Francs CFA</option>
+        <option value="EUR">Euro</option>
+        <option value="USD">Dollar</option>
+      </select>
+      <label for="devise-arrivee">Devise d'arrivée :</label>
+      <select id="devise-arrivee">
+        <option value="XOF">Francs CFA</option>
+        <option value="EUR">Euro</option>
+        <option value="USD">Dollar</option>
+      </select>
+      <button id="convertir">Convertir</button>
+      <p id="resultat"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<style>
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 400px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="number"] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+button {
+  width: 100%;
+  height: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+#resultat {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+</style>
+
+<Script>
+/*const montantInput = document.getElementById('montant');
+const deviseDepartSelect = document.getElementById('devise-depart');
+const deviseArriveeSelect = document.getElementById('devise-arrivee');
+const convertirButton = document.getElementById('convertir');
+const resultatParagraph = document.getElementById('resultat');
+
+convertirButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const montant = parseFloat(montantInput.value);
+  const deviseDepart = deviseDepartSelect.value;
+  const deviseArrivee = deviseArriveeSelect.value;
+
+  if (isNaN(montant) || montant <= 0) {
+    resultatParagraph.textContent = 'Veuillez entrer un montant valide';
+    return;
+  }
+
+  const taux = getTaux(deviseDepart, deviseArrivee);
+  const resultat = montant * taux;
+
+  resultatParagraph.textContent = `${montant} ${getDeviseSymbol(deviseDepart)} = ${resultat.toFixed(2)} ${getDeviseSymbol(deviseArrivee)}`;
+});
+
+function getTaux(deviseDepart, deviseArrivee) {
+  // Taux de change fixes pour l'exemple
+  // Vous pouvez utiliser une API pour obtenir les taux de change actuels
+  const taux = {
+    'XOF': {'EUR': 0.00152, 'USD': 0.0017},
+    'EUR': {'XOF': 655.957, 'USD': 1.12},
+    'USD': {'XOF': 586.51, 'EUR': 0.89}
+  };
+
+  return taux[deviseDepart][deviseArrivee];
+}
+
+function get resultatParagraph.textContent = `${montant} 
+  ${deviseDepart} = ${resultat.toFixed(2)} ${deviseArrivee}`;
+});
+  */
+  const montantInput = document.getElementById('montant');
+const deviseDepartSelect = document.getElementById('devise-depart');
+const deviseArriveeSelect = document.getElementById('devise-arrivee');
+const convertirButton = document.getElementById('convertir');
+const resultatParagraph = document.getElementById('resultat');
+
+const tauxDeChange = {
+  XOF: {
+    EUR: 0.00152,
+    USD: 0.0017,
+    XOF: 1
+  },
+  EUR: {
+    XOF: 655.957,
+    USD: 1.12,
+    EUR: 1
+  },
+  USD: {
+    XOF: 586.51,
+    EUR: 0.89,
+    USD: 1
+  }
+};
+
+convertirButton.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const montant = parseFloat(montantInput.value);
+  const deviseDepart = deviseDepartSelect.value;
+  const deviseArrivee = deviseArriveeSelect.value;
+
+  if (isNaN(montant) || montant <= 0) {
+    resultatParagraph.textContent = 'Veuillez entrer un montant valide';
+    return;
+  }
+
+  const taux = tauxDeChange[deviseDepart][deviseArrivee];
+  const resultat = montant * taux;
+
+  resultatParagraph.textContent = `${montant} ${deviseDepart} = ${resultat.toFixed(2)} ${deviseArrivee}`;
+});
+ </script>
